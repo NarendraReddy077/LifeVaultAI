@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+env/
+venv/
+.env
+supabase_schema.sql
+
+# Node
+node_modules/
+dist/
+.eslintcache
+
+# Env
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db

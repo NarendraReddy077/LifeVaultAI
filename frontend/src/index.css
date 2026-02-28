@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vault-dark: #1a1a1a;
+  --color-vault-card: #252525;
+  --color-vault-accent: #7c3aed;
+  --color-vault-soft: #f3f4f6;
+  --color-vault-muted: #6b7280;
+  --color-vault-sky: #e0f2fe;
+  --color-vault-herb: #f0fdf4;
+  --color-vault-rose: #fef2f2;
+
+  --font-serif: "Inter", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+:root {
+  --vault-bg: #f9fafb;
+  --vault-text: #111827;
+  --vault-secondary: #4b5563;
+}
+
+body {
+  background-color: var(--vault-bg);
+  color: var(--vault-text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  @apply bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-shadow duration-300;
+}
+
+.btn-primary {
+  @apply bg-vault-accent text-white px-6 py-2.5 rounded-xl font-medium hover:bg-vault-accent/90 transition-all active:scale-95;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-vault-accent focus:ring-1 focus:ring-vault-accent outline-none transition-all;
+}
+
+.calm-gradient {
+  background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+}
