@@ -8,7 +8,12 @@ class MemoryBase(BaseModel):
     image_url: Optional[str] = None
 
 class MemoryCreate(MemoryBase):
-    pass
+    created_at: Optional[datetime] = None
+
+class MemoryUpdate(BaseModel):
+    content: Optional[str] = None
+    mood: Optional[str] = None
+    image_url: Optional[str] = None
 
 class Memory(MemoryBase):
     id: str
@@ -28,3 +33,18 @@ class Insight(BaseModel):
     content: str
     time_range: str
     created_at: datetime
+
+class ProfileBase(BaseModel):
+    full_name: Optional[str] = None
+    avatar_url: Optional[str] = None
+    bio: Optional[str] = None
+
+class ProfileUpdate(ProfileBase):
+    pass
+
+class Profile(ProfileBase):
+    id: str
+    updated_at: datetime
+
+    class Config:
+        from_attributes = True

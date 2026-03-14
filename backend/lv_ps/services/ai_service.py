@@ -1,3 +1,4 @@
+import asyncio
 from google import genai
 from lv_ps.core.config import settings
 
@@ -9,10 +10,17 @@ class AIService:
 
     async def generate_content(self, prompt: str) -> str:
         """General helper for Gemini content generation."""
-        response = client.models.generate_content(
-            model=self.model_id,
-            contents=prompt
-        )
+        if hasattr(client, 'aio'):
+            response = await client.aio.models.generate_content(
+                model=self.model_id,
+                contents=prompt
+            )
+        else:
+            response = await asyncio.to_thread(
+                client.models.generate_content,
+                model=self.model_id,
+                contents=prompt
+            )
         return response.text.strip()
 
     async def detect_emotion(self, text: str) -> str:
@@ -21,10 +29,12 @@ class AIService:
 
     async def generate_reflection(self, text: str, emotion: str) -> str:
         prompt = f"""
-        Based on the following memory and detected emotion, provide a short, reflective response.
+        You are a neutral, observational AI "Observer" for a private memory vault called LifeVault AI.
+        Based on the following memory and detected emotion, provide a short (1-2 sentence) reflective observation.
+        
         Rules:
         - Be observational and neutral.
-        - Non-prescriptive (no advice).
+        - Non-prescriptive (DO NOT give advice, DO NOT suggest actions).
         - Use framing: 'Based on your stored memories...' or 'Patterns suggest...'
         - End with: 'This is a reflection, not professional advice.'
         

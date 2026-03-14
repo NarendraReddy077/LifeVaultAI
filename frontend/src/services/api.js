@@ -23,12 +23,29 @@ export const memoryAPI = {
     createMemory: (formData) => api.post('/memories/', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
     }),
+    updateMemory: (id, formData) => api.put(`/memories/${id}`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+    }),
+    deleteMemory: (id) => api.delete(`/memories/${id}`),
     askAI: (query) => api.get('/memories/ask-ai/', { params: { query } }),
+    exportMemories: () => api.get('/memories/export'),
+};
+
+export const profileAPI = {
+    getMe: () => api.get('/profiles/me'),
+    updateMe: (data) => api.put('/profiles/me', data),
 };
 
 export const insightAPI = {
     getInsights: () => api.get('/insights/'),
-    generateWeekly: () => api.post('/insights/generate-weekly'),
+    generateInsight: (period, startDate, endDate) => {
+        let url = `/insights/generate?period=${period}`;
+        if (startDate && endDate) {
+            url += `&start_date=${startDate}&end_date=${endDate}`;
+        }
+        return api.post(url);
+    },
+    deleteInsight: (id) => api.delete(`/insights/${id}`)
 };
 
 export default api;

@@ -1,47 +1,101 @@
 @import "tailwindcss";
 
 @theme {
-  --color-vault-dark: #1a1a1a;
-  --color-vault-card: #252525;
-  --color-vault-accent: #7c3aed;
-  --color-vault-soft: #f3f4f6;
-  --color-vault-muted: #6b7280;
-  --color-vault-sky: #e0f2fe;
-  --color-vault-herb: #f0fdf4;
-  --color-vault-rose: #fef2f2;
+  --color-vault-accent: #8b5cf6;
+  --color-vault-accent-hover: #7c3aed;
+  --color-vault-muted: #64748b;
 
-  --font-serif: "Inter", serif;
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Outfit", serif;
 
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
 }
 
 :root {
   --vault-bg: #f9fafb;
-  --vault-text: #111827;
-  --vault-secondary: #4b5563;
+  --vault-text: #0f172a;
+  --vault-card: #ffffff;
+  --vault-border: #e2e8f0;
+  --vault-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --vault-glass: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme='dark'] {
+  --vault-bg: #0f172a;
+  --vault-text: #f8fafc;
+  --vault-card: #1e293b;
+  --vault-border: #334155;
+  --vault-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --vault-glass: rgba(15, 23, 42, 0.7);
 }
 
 body {
   background-color: var(--vault-bg);
   color: var(--vault-text);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes mesh {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.mesh-gradient {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: mesh 15s ease infinite;
+}
+
+.glass-morphism {
+  background: var(--vault-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+[data-theme='dark'] .glass-morphism {
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card {
-  @apply bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-shadow duration-300;
+  background-color: var(--vault-card);
+  border: 1px solid var(--vault-border);
+  box-shadow: var(--vault-shadow);
+  @apply rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl hover:scale-[1.01] hover:border-vault-accent/30;
 }
 
 .btn-primary {
-  @apply bg-vault-accent text-white px-6 py-2.5 rounded-xl font-medium hover:bg-vault-accent/90 transition-all active:scale-95;
+  background-color: var(--color-vault-accent);
+  @apply text-white px-8 py-3 rounded-2xl font-bold hover:bg-vault-accent-hover transition-all active:scale-95 shadow-xl shadow-vault-accent/30 hover:shadow-vault-accent/50;
 }
 
 .input-field {
-  @apply w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-vault-accent focus:ring-1 focus:ring-vault-accent outline-none transition-all;
+  background-color: var(--vault-card);
+  color: var(--vault-text);
+  @apply w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-zinc-800 focus:border-vault-accent focus:ring-4 focus:ring-vault-accent/10 outline-none transition-all font-medium;
+}
+
+.premium-gradient {
+  background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
 }
 
 .calm-gradient {
   background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+}
+
+[data-theme='dark'] .calm-gradient {
+  background: linear-gradient(135deg, #166534 0%, #1e3a8a 100%);
 }
