@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { profileAPI, memoryAPI } from '../services/api';
 import { useTheme } from '../context/ThemeContext';
-import { User, Bell, Shield, LogOut, Moon, Sun, Download, Save, CheckCircle } from 'lucide-react';
+import { User, Bell, Shield, LogOut, Moon, Sun, Download, Save, CheckCircle, Settings as SettingsIcon, ShieldCheck, Database, Zap, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 const Settings = () => {
@@ -68,137 +69,160 @@ const Settings = () => {
     };
 
     if (loading) return (
-        <div className="flex flex-col items-center justify-center py-60 space-y-8 text-center px-6">
-            <div className="relative">
-                <div className="w-24 h-24 border-4 border-vault-accent/10 border-t-vault-accent rounded-full animate-spin" />
+        <div className="flex flex-col items-center justify-center py-60 space-y-10 text-center px-6">
+            <div className="relative group">
+                <div className="w-28 h-28 border-8 border-vault-accent/5 border-t-vault-accent rounded-full animate-spin transition-all duration-1000 group-hover:border-t-fuchsia-500" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <Settings className="text-vault-accent animate-pulse" size={28} />
+                    <SettingsIcon className="text-vault-accent animate-pulse" size={32} />
                 </div>
             </div>
-            <div className="space-y-3">
-                <p className="text-zinc-500 font-black uppercase tracking-[0.4em] text-xs animate-pulse">Syncing Configuration</p>
-                <p className="text-zinc-400 text-xs italic font-medium">Accessing vault protocols...</p>
+            <div className="space-y-4">
+                <p className="text-zinc-500 font-black uppercase tracking-[0.5em] text-[10px] animate-pulse">Syncing Configuration</p>
+                <p className="text-zinc-400 text-xs italic font-medium opacity-50">Accessing vault protocols...</p>
             </div>
         </div>
     );
 
     return (
-        <div className="max-w-3xl mx-auto space-y-16 pb-32 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
-                <div className="space-y-4">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-vault-accent/10 text-vault-accent text-[10px] font-black uppercase tracking-[0.3em] border border-vault-accent/20">
-                        <Shield size={12} /> Vault Configuration
+        <div className="max-w-5xl mx-auto space-y-20 pb-40">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 border-b border-zinc-100 dark:border-zinc-800 pb-16">
+                <div className="space-y-6">
+                    <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-vault-accent/10 text-vault-accent text-[11px] font-black uppercase tracking-[0.3em] border border-vault-accent/20">
+                        <ShieldCheck size={16} strokeWidth={2} /> Security Paradigm
                     </div>
-                    <h2 className="text-6xl font-black tracking-tighter leading-none">Your <span className="premium-gradient-text">Protocol.</span></h2>
-                    <p className="text-zinc-500 font-medium text-lg leading-relaxed italic">Fine-tune your cognitive interface and data sovereignty.</p>
+                    <h2 className="text-6xl md:text-7xl font-black tracking-tighter leading-none">Your <span className="premium-gradient-text">Matrix.</span></h2>
+                    <p className="text-zinc-500 font-medium text-xl leading-relaxed italic max-w-xl">Configure your neural interface and maintain absolute data sovereignty.</p>
                 </div>
-                <button
-                    onClick={toggleTheme}
-                    className="p-4 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-500 hover:text-vault-accent hover:border-vault-accent hover:scale-105 transition-all shadow-xl group"
-                >
-                    {theme === 'light' ? <Moon size={28} className="group-hover:rotate-12 transition-transform" /> : <Sun size={28} className="group-hover:rotate-90 transition-transform" />}
-                </button>
+                <div className="flex items-center gap-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 md:block hidden">Toggle Ambient Mode</p>
+                    <button
+                        onClick={toggleTheme}
+                        className="p-6 rounded-[2rem] bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 text-zinc-500 hover:text-vault-accent hover:border-vault-accent hover:scale-105 transition-all shadow-2xl active:scale-95 group"
+                    >
+                        {theme === 'light' ? <Moon size={32} className="group-hover:rotate-12 transition-transform duration-500" /> : <Sun size={32} className="group-hover:rotate-90 transition-transform duration-500" />}
+                    </button>
+                </div>
             </div>
 
-            <div className="space-y-8">
-                <form onSubmit={handleUpdateProfile} className="glass-card space-y-10 !p-12 md:!p-16 relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-vault-accent/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
+            <div className="space-y-16">
+                <form onSubmit={handleUpdateProfile} className="glass-card !p-12 md:!p-20 space-y-16 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-vault-accent/5 rounded-full blur-[120px] -mr-64 -mt-64 pointer-events-none group-hover:bg-vault-accent/10 transition-colors duration-1000" />
 
-                    <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 rounded-2xl bg-vault-accent/10 flex items-center justify-center text-vault-accent border border-vault-accent/20 shadow-xl shadow-vault-accent/5">
-                            <User size={24} />
+                    <div className="flex items-center space-x-6">
+                        <div className="w-16 h-16 rounded-[2rem] bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center text-vault-accent border border-zinc-100 dark:border-zinc-800 shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                            <User size={32} />
                         </div>
-                        <h3 className="text-2xl font-black tracking-tighter">Identity Core</h3>
+                        <div className="space-y-1">
+                            <h3 className="text-3xl font-black tracking-tighter">Identity Core</h3>
+                            <p className="text-xs text-zinc-400 font-black uppercase tracking-widest opacity-40">Profile Metadata</p>
+                        </div>
                     </div>
 
-                    <div className="space-y-8">
-                        <div className="space-y-3">
-                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 ml-1">Universal Designation</label>
+                    <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+                        <div className="space-y-6">
+                            <label className="flex items-center gap-3 text-[11px] font-black text-zinc-400 uppercase tracking-[0.3em] ml-1">
+                                <Zap size={14} className="text-vault-accent" /> Neural Designation
+                            </label>
                             <input
                                 type="text"
-                                className="w-full bg-zinc-50 dark:bg-zinc-900/50 border-2 border-zinc-100 dark:border-zinc-800 focus:border-vault-accent rounded-[1.5rem] px-6 py-4 text-sm font-bold outline-none transition-all placeholder:text-zinc-400 dark:text-zinc-100"
+                                className="input-field !py-5 !text-lg bg-white dark:bg-zinc-900/40 focus:bg-white dark:focus:bg-zinc-900 border-zinc-100 dark:border-zinc-800 shadow-sm"
                                 placeholder="Your full name"
                                 value={profile.full_name}
                                 onChange={(e) => setProfile({ ...profile, full_name: e.target.value })}
                             />
                         </div>
-                        <div className="space-y-3">
-                            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 ml-1">Cognitive Summary</label>
+                        <div className="space-y-6">
+                            <label className="flex items-center gap-3 text-[11px] font-black text-zinc-400 uppercase tracking-[0.3em] ml-1">
+                                <ShieldCheck size={14} className="text-vault-accent" /> Cognitive Narrative
+                            </label>
                             <textarea
-                                className="w-full bg-zinc-50 dark:bg-zinc-900/50 border-2 border-zinc-100 dark:border-zinc-800 focus:border-vault-accent rounded-[1.5rem] px-6 py-4 text-sm font-medium leading-relaxed resize-none min-h-[140px] outline-none transition-all placeholder:text-zinc-400 dark:text-zinc-100 italic"
-                                placeholder="A brief narrative of your persona..."
+                                className="input-field !py-5 !text-lg bg-white dark:bg-zinc-900/40 focus:bg-white dark:focus:bg-zinc-900 border-zinc-100 dark:border-zinc-800 shadow-sm min-h-[160px] resize-none italic"
+                                placeholder="A brief summary of your persona..."
                                 value={profile.bio}
                                 onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
                             />
                         </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-6">
-                        <div className="min-h-[24px]">
+                    <div className="flex items-center justify-between pt-8 border-t border-zinc-50 dark:border-zinc-900">
+                        <div className="min-h-[30px]">
                             {saveStatus === 'success' && (
                                 <motion.span
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    className="flex items-center text-emerald-500 text-[10px] font-black uppercase tracking-widest"
+                                    className="flex items-center text-emerald-500 text-xs font-black uppercase tracking-[0.3em]"
                                 >
-                                    <CheckCircle size={14} className="mr-2" /> Protocol Updated
+                                    <CheckCircle size={18} className="mr-3" /> Protocol Synchronized
                                 </motion.span>
                             )}
                         </div>
                         <button
                             type="submit"
                             disabled={saving}
-                            className="btn-primary !px-10 !py-4 active:scale-95 group/btn"
+                            className="btn-primary !px-12 !py-5 !rounded-[2rem] active:scale-95 group/btn shadow-[0_15px_40px_-10px_rgba(251,191,36,0.3)] !text-lg"
                         >
-                            <span className="flex items-center gap-3">
+                            <span className="flex items-center gap-4">
                                 {saving ? (
-                                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                ) : <Save size={18} className="group-hover:rotate-12 transition-transform" />}
-                                <span>{saving ? 'Synchronizing...' : 'Save Configuration'}</span>
+                                    <div className="w-6 h-6 border-4 border-zinc-950/20 border-t-zinc-950 rounded-full animate-spin" />
+                                ) : <Save size={22} className="group-hover:rotate-12 transition-transform duration-500" />}
+                                <span>{saving ? 'Synchronizing...' : 'Update Protocol'}</span>
                             </span>
                         </button>
                     </div>
                 </form>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                    <section className="glass-card !p-10 space-y-6 flex flex-col justify-between">
-                        <div className="space-y-4">
-                            <div className="flex items-center space-x-3 text-vault-accent">
-                                <Download size={20} />
-                                <h3 className="text-lg font-black tracking-tighter">Data Sovereignty</h3>
+                <div className="grid md:grid-cols-2 gap-10">
+                    <section className="glass-card !p-12 space-y-10 flex flex-col justify-between group hover:border-vault-accent/30 transition-all duration-700">
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-5 text-vault-accent">
+                                <div className="p-4 rounded-3xl bg-vault-accent/10 border border-vault-accent/20 group-hover:scale-110 transition-transform duration-500">
+                                    <Database size={28} />
+                                </div>
+                                <h3 className="text-2xl font-black tracking-tighter">Data Sovereignty</h3>
                             </div>
-                            <p className="text-xs text-zinc-500 leading-relaxed italic">
-                                Absolute ownership of your temporal trail. Export your entire memory vault as a secure JSON anchor.
+                            <p className="text-sm text-zinc-500 leading-relaxed italic opacity-80">
+                                Absolute ownership of your temporal trail. Extract your complete memory architecture as a decentralized, encrypted JSON anchor.
                             </p>
                         </div>
                         <button
                             onClick={handleExport}
-                            className="w-full flex items-center justify-center space-x-3 p-5 rounded-2xl border-2 border-dashed border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:bg-vault-accent/5 hover:border-vault-accent/30 hover:text-vault-accent transition-all font-black text-[10px] uppercase tracking-widest active:scale-95"
+                            className="w-full flex items-center justify-center gap-4 py-6 rounded-3xl border-4 border-dashed border-zinc-100 dark:border-zinc-800 text-zinc-400 hover:bg-vault-accent/5 hover:border-vault-accent/40 hover:text-vault-accent transition-all font-black text-xs uppercase tracking-[0.3em] active:scale-95"
                         >
-                            <Download size={18} />
-                            <span>Extract Vault Anchor</span>
+                            <Download size={22} />
+                            <span>Extract Neural Data</span>
                         </button>
                     </section>
 
-                    <section className="glass-card !p-10 border-rose-100 dark:border-rose-900/20 space-y-6 flex flex-col justify-between">
-                        <div className="space-y-4">
-                            <div className="flex items-center space-x-3 text-rose-500">
-                                <Shield size={20} />
-                                <h3 className="text-lg font-black tracking-tighter">Session Protocol</h3>
+                    <section className="glass-card !p-12 space-y-10 flex flex-col justify-between group hover:border-rose-500/30 transition-all duration-700">
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-5 text-rose-500">
+                                <div className="p-4 rounded-3xl bg-rose-500/5 border border-rose-500/10 group-hover:scale-110 transition-transform duration-500">
+                                    <LogOut size={28} />
+                                </div>
+                                <h3 className="text-2xl font-black tracking-tighter">Link Termination</h3>
                             </div>
-                            <p className="text-xs text-zinc-500 leading-relaxed italic">
-                                Terminate the neural link and securely disconnect from the LifeVault matrix.
+                            <p className="text-sm text-zinc-500 leading-relaxed italic opacity-80">
+                                Deauthorize the current session and securely decouple your cognitive interface from the LifeVault network protocols.
                             </p>
                         </div>
                         <button
                             onClick={handleLogout}
-                            className="flex items-center justify-center space-x-3 w-full p-5 rounded-2xl text-rose-500 bg-rose-500/5 hover:bg-rose-500/10 border border-rose-500/10 transition-all font-black text-[10px] uppercase tracking-widest active:scale-95"
+                            className="flex items-center justify-center gap-4 w-full py-6 rounded-3xl text-rose-500 bg-rose-500/5 hover:bg-rose-500/10 border border-rose-500/10 transition-all font-black text-xs uppercase tracking-[0.3em] active:scale-95"
                         >
-                            <LogOut size={18} />
-                            <span>Terminate Link</span>
+                            <LogOut size={22} />
+                            <span>Sever Neural Link</span>
                         </button>
                     </section>
                 </div>
+            </div>
+
+            <div className="text-center opacity-30 space-y-6">
+                <div className="flex items-center justify-center gap-10">
+                    <div className="h-px w-20 bg-zinc-300 dark:bg-zinc-800"></div>
+                    <Sparkles size={16} className="text-vault-accent" />
+                    <div className="h-px w-20 bg-zinc-300 dark:bg-zinc-800"></div>
+                </div>
+                <p className="text-[10px] font-black uppercase tracking-[0.6em] text-zinc-500">Quantum Grade Encryption Protcl &bull; v2.0.4</p>
             </div>
         </div>
     );

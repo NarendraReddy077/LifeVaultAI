@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-vault-accent: #8b5cf6;
-  --color-vault-accent-hover: #7c3aed;
-  --color-vault-muted: #64748b;
+  --color-vault-accent: #fbbf24;
+  --color-vault-accent-hover: #f59e0b;
+  --color-vault-muted: #71717a;
+  --color-vault-bg: var(--vault-bg);
+  --color-vault-card: var(--vault-card);
+  --color-vault-border: var(--vault-border);
+  --color-vault-text: var(--vault-text);
 
   --font-sans: "Inter", system-ui, sans-serif;
   --font-serif: "Outfit", serif;
@@ -11,24 +15,25 @@
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
   --radius-3xl: 2rem;
+  --radius-4xl: 3rem;
 }
 
 :root {
-  --vault-bg: #f9fafb;
-  --vault-text: #0f172a;
+  --vault-bg: #fcfcfc;
+  --vault-text: #09090b;
   --vault-card: #ffffff;
-  --vault-border: #e2e8f0;
-  --vault-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --vault-border: #e4e4e7;
+  --vault-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
   --vault-glass: rgba(255, 255, 255, 0.7);
 }
 
 [data-theme='dark'] {
-  --vault-bg: #0f172a;
-  --vault-text: #f8fafc;
-  --vault-card: #1e293b;
-  --vault-border: #334155;
-  --vault-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-  --vault-glass: rgba(15, 23, 42, 0.7);
+  --vault-bg: #09090b;
+  --vault-text: #fafafa;
+  --vault-card: #121215;
+  --vault-border: #27272a;
+  --vault-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+  --vault-glass: rgba(9, 9, 11, 0.7);
 }
 
 body {
@@ -36,66 +41,57 @@ body {
   color: var(--vault-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes mesh {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .mesh-gradient {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #fbbf24, #f59e0b, #06b6d4, #8b5cf6);
   background-size: 400% 400%;
-  animation: mesh 15s ease infinite;
+  animation: mesh 12s ease infinite;
 }
 
-.glass-morphism {
+.premium-gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-vault-accent via-amber-500 to-orange-500;
+}
+
+.glass-card {
   background: var(--vault-glass);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.125);
-}
-
-[data-theme='dark'] .glass-morphism {
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.card {
-  background-color: var(--vault-card);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--vault-border);
-  box-shadow: var(--vault-shadow);
-  @apply rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl hover:scale-[1.01] hover:border-vault-accent/30;
+  @apply shadow-2xl rounded-3xl p-8 transition-all duration-500 hover:shadow-vault-accent/5;
 }
 
 .btn-primary {
-  background-color: var(--color-vault-accent);
-  @apply text-white px-8 py-3 rounded-2xl font-bold hover:bg-vault-accent-hover transition-all active:scale-95 shadow-xl shadow-vault-accent/30 hover:shadow-vault-accent/50;
+  @apply bg-vault-accent text-zinc-950 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs
+         hover:bg-vault-accent-hover transition-all active:scale-95 shadow-xl shadow-vault-accent/20 
+         hover:shadow-vault-accent/40 flex items-center justify-center gap-2;
+}
+
+.btn-secondary {
+  @apply bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs
+         hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all active:scale-95 border border-zinc-200 dark:border-zinc-700
+         flex items-center justify-center gap-2;
 }
 
 .input-field {
   background-color: var(--vault-card);
   color: var(--vault-text);
-  @apply w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-zinc-800 focus:border-vault-accent focus:ring-4 focus:ring-vault-accent/10 outline-none transition-all font-medium;
+  @apply w-full px-6 py-5 rounded-2xl border-2 border-zinc-100 dark:border-zinc-800 
+         focus:border-vault-accent focus:ring-0 outline-none transition-all font-bold 
+         placeholder:text-zinc-400 dark:placeholder:text-zinc-600;
 }
 
-.premium-gradient {
-  background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+.premium-shadow {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1);
 }
 
-.calm-gradient {
-  background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
-}
-
-[data-theme='dark'] .calm-gradient {
-  background: linear-gradient(135deg, #166534 0%, #1e3a8a 100%);
+[data-theme='dark'] .premium-shadow {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
 }
