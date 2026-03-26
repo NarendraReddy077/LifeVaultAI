@@ -7,6 +7,7 @@
   --color-vault-bg: var(--vault-bg);
   --color-vault-card: var(--vault-card);
   --color-vault-border: var(--vault-border);
+  --vault-muted: #64748b;
   --color-vault-text: var(--vault-text);
 
   --font-sans: "Inter", system-ui, sans-serif;
@@ -19,21 +20,22 @@
 }
 
 :root {
-  --vault-bg: #fcfcfc;
-  --vault-text: #09090b;
+  --vault-bg: #f8fafc;
+  --vault-text: #0f172a;
   --vault-card: #ffffff;
-  --vault-border: #e4e4e7;
-  --vault-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-  --vault-glass: rgba(255, 255, 255, 0.7);
+  --vault-border: #e2e8f0;
+  --vault-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  --vault-glass: rgba(255, 255, 255, 0.85);
+  --vault-muted: #64748b;
 }
 
 [data-theme='dark'] {
-  --vault-bg: #09090b;
-  --vault-text: #fafafa;
-  --vault-card: #121215;
-  --vault-border: #27272a;
-  --vault-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
-  --vault-glass: rgba(9, 9, 11, 0.7);
+  --vault-bg: #020617;
+  --vault-text: #f8fafc;
+  --vault-card: #0f172a;
+  --vault-border: #1e293b;
+  --vault-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
+  --vault-glass: rgba(15, 23, 42, 0.8);
 }
 
 body {

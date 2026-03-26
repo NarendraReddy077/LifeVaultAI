@@ -23,7 +23,7 @@ const Landing = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.1 }}
-                        className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] text-zinc-900 dark:text-zinc-50"
+                        className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] text-slate-900 dark:text-zinc-50"
                     >
                         Your memories, <br/>
                         <span className="premium-gradient-text italic">witnessed.</span>
@@ -33,7 +33,7 @@ const Landing = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-xl md:text-2xl text-zinc-500 dark:text-zinc-400 max-w-2xl font-medium leading-relaxed"
+                        className="text-xl md:text-2xl text-slate-600 dark:text-zinc-400 max-w-2xl font-medium leading-relaxed"
                     >
                         A high-fidelity sanctuary for your lived experiences. Private, secure, and entirely yours. 
                         Let the neural engine decode the patterns of your journey.
@@ -68,7 +68,7 @@ const Landing = () => {
             </section>
 
             {/* Features Grid */}
-            <section id="features" className="relative py-32 md:py-52 px-6 bg-zinc-50 dark:bg-zinc-900/30 border-y border-vault-border">
+            <section id="features" className="relative py-32 md:py-52 px-6 bg-slate-50/50 dark:bg-zinc-900/30 border-y border-vault-border">
                 <div className="max-w-7xl mx-auto space-y-24">
                     <div className="text-center max-w-2xl mx-auto space-y-6">
                         <h2 className="text-4xl md:text-6xl font-black tracking-tighter">Beyond <span className="premium-gradient-text">Chronicling.</span></h2>
@@ -137,9 +137,9 @@ const Landing = () => {
 const FeatureCard = ({ icon, title, description }) => (
     <motion.div
         whileHover={{ y: -10 }}
-        className="glass-card !bg-vault-card group border border-vault-border p-12 space-y-8 hover:border-vault-accent/30 transition-all duration-500 shadow-sm"
+        className="glass-card !bg-vault-card group border border-vault-border p-12 space-y-8 hover:border-vault-accent/30 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-vault-accent/5"
     >
-        <div className="w-16 h-16 rounded-2xl bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform duration-500">
+        <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-zinc-900 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform duration-500">
             {icon}
         </div>
         <div className="space-y-4">

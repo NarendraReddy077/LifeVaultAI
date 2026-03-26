@@ -48,21 +48,21 @@ const Layout = ({ children }) => {
                         <NavLink to="/settings" icon={<Settings size={18} />} label="Configuration" active={isActive('/settings')} />
                         <button
                             onClick={handleLogout}
-                            className="flex items-center space-x-3 w-full px-4 py-3.5 text-zinc-400 hover:text-rose-500 hover:bg-rose-500/5 rounded-xl transition-all font-bold text-[11px] uppercase tracking-widest group"
+                            className="flex items-center space-x-3.5 w-full px-4 py-3.5 text-zinc-400 hover:text-rose-500 hover:bg-rose-500/5 dark:hover:bg-rose-500/10 rounded-xl transition-all font-bold text-[11px] uppercase tracking-[0.2em] group"
                         >
                             <LogOut size={18} className="group-hover:-translate-x-1 transition-transform" />
                             <span>Sign Out</span>
                         </button>
                     </div>
 
-                    <div className="p-4 bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl border border-zinc-100 dark:border-zinc-800 relative overflow-hidden group">
+                    <div className="p-4 bg-zinc-50 dark:bg-zinc-900/40 rounded-2xl border border-zinc-100 dark:border-zinc-800/50 relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-500/5 rounded-full blur-xl -mr-8 -mt-8 group-hover:bg-emerald-500/10 transition-colors" />
                         <div className="flex items-center gap-2.5">
                             <div className="relative flex items-center justify-center">
                                 <div className="absolute inset-0 bg-emerald-500 animate-ping opacity-20 rounded-full" />
                                 <div className="w-2 h-2 bg-emerald-500 rounded-full" />
                             </div>
-                            <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-500 uppercase tracking-[0.2em]">Encrypted Link</span>
+                            <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em]">Encrypted Link</span>
                         </div>
                     </div>
                 </div>
@@ -134,9 +134,9 @@ const Layout = ({ children }) => {
 const NavLink = ({ to, icon, label, active }) => (
     <Link
         to={to}
-        className={`flex items-center space-x-3.5 px-4 py-3 rounded-xl transition-all duration-300 font-bold group ${active
-            ? 'bg-vault-accent/10 text-vault-accent border border-vault-accent/20'
-            : 'text-zinc-500 hover:text-vault-accent hover:bg-vault-accent/5'
+        className={`flex items-center space-x-4 px-4 py-3.5 rounded-xl transition-all duration-300 font-bold group ${active
+            ? 'bg-vault-accent/10 dark:bg-vault-accent/15 text-vault-accent border border-vault-accent/20 dark:border-vault-accent/30 shadow-sm shadow-vault-accent/5'
+            : 'text-zinc-500 hover:text-vault-accent hover:bg-vault-accent/5 dark:hover:bg-vault-accent/10'
             }`}
     >
         <span className={`${active ? 'scale-110' : 'group-hover:scale-110'} transition-transform duration-300`}>

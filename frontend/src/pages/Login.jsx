@@ -34,11 +34,11 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-6 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-1000 overflow-hidden relative">
+        <div className="min-h-screen flex items-center justify-center p-6 bg-slate-50 dark:bg-zinc-950 transition-colors duration-1000 overflow-hidden relative">
             {/* Immersive background elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-vault-accent/10 blur-[150px] rounded-full animate-float"></div>
-                <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-fuchsia-500/5 blur-[120px] rounded-full animate-float transition-delay-[3s]"></div>
+                <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-vault-accent/5 dark:bg-vault-accent/10 blur-[150px] rounded-full animate-float"></div>
+                <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full animate-float transition-delay-[3s]"></div>
             </div>
 
             <motion.div
@@ -47,14 +47,14 @@ const Login = () => {
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="w-full max-w-xl relative z-10"
             >
-                <div className="glass-card !p-12 md:!p-16 shadow-2xl border-white/40 dark:border-zinc-800 shadow-vault-accent/5">
+                <div className="glass-card !p-12 md:!p-16 shadow-2xl border-white/60 dark:border-zinc-800 shadow-vault-accent/5 backdrop-blur-3xl">
                     <div className="text-center mb-16 space-y-6">
                         <div className="inline-flex items-center justify-center p-6 bg-vault-accent rounded-[2.5rem] shadow-2xl shadow-vault-accent/30 text-zinc-950 mb-4 hover:scale-110 transition-transform duration-500">
                             <ShieldCheck size={48} strokeWidth={1.5} />
                         </div>
                         <div className="space-y-2">
-                            <h1 className="text-5xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50">LifeVault <span className="text-vault-accent">AI</span></h1>
-                            <p className="text-zinc-500 dark:text-zinc-400 font-medium italic">
+                            <h1 className="text-5xl font-black tracking-tighter text-slate-900 dark:text-zinc-50">LifeVault <span className="text-vault-accent">AI</span></h1>
+                            <p className="text-slate-500 dark:text-zinc-400 font-medium italic">
                                 {isLogin ? 'Initialize your neural synchronization.' : 'Configure your secure vault interface.'}
                             </p>
                         </div>
@@ -67,7 +67,7 @@ const Login = () => {
                                 <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-300 group-focus-within:text-vault-accent transition-all duration-300" size={22} />
                                 <input
                                     type="email"
-                                    className="input-field !pl-14 !py-5 !text-lg bg-zinc-50/50 dark:bg-zinc-900/40 focus:bg-white dark:focus:bg-zinc-900 border-zinc-100 dark:border-zinc-800"
+                                    className="input-field !pl-14 !py-5 !text-lg bg-white/50 dark:bg-zinc-900/40 focus:bg-white dark:focus:bg-zinc-900 border-slate-100 dark:border-zinc-800 shadow-sm"
                                     placeholder="your@neural.id"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -82,7 +82,7 @@ const Login = () => {
                                 <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-300 group-focus-within:text-vault-accent transition-all duration-300" size={22} />
                                 <input
                                     type="password"
-                                    className="input-field !pl-14 !py-5 !text-lg bg-zinc-50/50 dark:bg-zinc-900/40 focus:bg-white dark:focus:bg-zinc-900 border-zinc-100 dark:border-zinc-800"
+                                    className="input-field !pl-14 !py-5 !text-lg bg-white/50 dark:bg-zinc-900/40 focus:bg-white dark:focus:bg-zinc-900 border-slate-100 dark:border-zinc-800 shadow-sm"
                                     placeholder="••••••••••••"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}

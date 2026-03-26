@@ -99,7 +99,7 @@ const Timeline = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="text-zinc-500 text-xl font-medium italic leading-relaxed"
+                        className="text-slate-500 dark:text-zinc-400 text-xl font-medium italic leading-relaxed"
                     >
                         A high-fidelity sanctuary for the moments that define your narrative.
                     </motion.p>
@@ -195,10 +195,10 @@ const MemoryCard = ({ memory, onDelete, onEdit }) => {
                             <Clock size={24} />
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-zinc-900 dark:text-zinc-100 text-3xl font-black tracking-tighter">
+                            <span className="text-slate-900 dark:text-zinc-100 text-3xl font-black tracking-tighter">
                                 {new Date(memory.created_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
                             </span>
-                            <span className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.4em] mt-1">
+                            <span className="text-[10px] text-slate-500 dark:text-zinc-400 font-black uppercase tracking-[0.4em] mt-1">
                                 {new Date(memory.created_at).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })} &bull; Anchor Set
                             </span>
                         </div>
@@ -228,7 +228,7 @@ const MemoryCard = ({ memory, onDelete, onEdit }) => {
                 </div>
 
                 <div className="relative">
-                    <p className="text-zinc-800 dark:text-zinc-200 leading-[1.8] whitespace-pre-wrap text-2xl md:text-3xl font-light tracking-wide italic">
+                    <p className="text-slate-800 dark:text-zinc-200 leading-[1.8] whitespace-pre-wrap text-2xl md:text-3xl font-light tracking-wide italic">
                         "{memory.content}"
                     </p>
                 </div>
